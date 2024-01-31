@@ -11,18 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('destination', function (Blueprint $table) {
-            $table->id();
-            $table->string('destination');
-            $table->timestamps();
+        Schema::table('destination', function (Blueprint $table) {
+            $table->dropColumn('updated_at');
+            $table->dropColumn('created_at');
+
+            //
         });
-    }   
+    }
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('destination');
+        Schema::table('destination', function (Blueprint $table) {
+            //
+        });
     }
 };
