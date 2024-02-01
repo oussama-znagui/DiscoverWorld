@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecitController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/', [RecitController::class, "index"]);
+Route::get('/add', [RecitController::class, "create"]);
+Route::post('/add', [RecitController::class, "store"]);
