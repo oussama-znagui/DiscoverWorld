@@ -46,12 +46,15 @@
 
 
 
-
     </header>
     <main>
         <section class="my-16">
             <h1 class="text-center  mb-4 text-2xl my-5 font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl ">We invest in the world’s potential</h1>
             <p class="text-center  mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
+            <div>
+                <a href="/?sort=oldest">asc</a>
+                <a href="/?sort=latest">desc</a>
+            </div>
 
 
             <div class="grid grid-cols-1 md:grid-cols-2 md:grid-cols-3 gap-4 w-3/4 m-auto">
@@ -59,7 +62,7 @@
                 @foreach($recits as $recit)
 
                 <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                    <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg" alt="">
+                    <img class="h-auto max-w-full rounded-lg" src="/images/{{$recit->images[0]->image}}" alt="">
                     <a href="#">
 
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{$recit->titre}}</h5>

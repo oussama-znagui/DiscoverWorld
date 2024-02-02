@@ -14,10 +14,14 @@ class Recit extends Model
         "destination_id",
         "conseil"
     ];
-    protected $with = ["destination"];
+    protected $with = ["destination", "images"];
 
     public function destination()
     {
         return $this->belongsTo(Destination::class);
+    }
+    public function images()
+    {
+        return $this->hasMany(Image::class);
     }
 }
