@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('recits', function (Blueprint $table) {
-            $table->dropColumn('updated_at');
+        Schema::create('recits', function (Blueprint $table) {
+            $table->id();
+            $table->string("titre");
+            $table->text("description");
+            $table->text("conseil");
+            $table->foreignId("destination_id")->constrained("destinations");
+            $table->timestamps();
         });
     }
 
@@ -21,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('recit', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('recits');
     }
 };
