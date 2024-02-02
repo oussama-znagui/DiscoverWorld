@@ -17,7 +17,11 @@ class RecitFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'titre' => fake()->name(),
+            'description' => fake()->paragraph(),
+            'conseil' => fake()->paragraph(),
+            'destination_id'=> 1,
         ];
     }
+
 }

@@ -28,23 +28,36 @@
 
             <div class="container mx-auto my-4 px-4 lg:px-20">
 
-                <form class="bg-gray-100 w-full p-8 my-4 md:px-12 lg:w-9/12 lg:pl-20 lg:pr-40 mr-auto rounded-2xl shadow-2xl">
+                <form class="bg-gray-100 w-full p-8 my-4 md:px-12 lg:w-9/12 lg:pl-20 lg:pr-40 mr-auto rounded-2xl shadow-2xl" enctype="multipart/form-data" method="post" action="/add">
+                    @csrf
                     <div class="flex">
                         <h1 class="font-bold uppercase text-5xl">Ajouter un recit</h1>
                     </div>
                     <div class="grid grid-cols-1 gap-5 md:grid-cols-1 mt-5">
-                        <input class="border-2  w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="file" />
+                        <input name="images[]" class="border-2  w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="file" multiple />
 
                     </div>
                     <div class="grid grid-cols-1 gap-5 md:grid-cols-1 mt-5">
-                        <input class="border-2  w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="text" placeholder="Titre*" />
+                        <label for="">Destination</label>
+                        <select name="destination_id" class="border-2  w-full bg-gray-100 text-gray-900  p-3 rounded-lg focus:outline-none focus:shadow-outline" type="text" placeholder="Titre*">
+                            @foreach($destinations as $destination)
+                            <option value="{{$destination->id}}">{{$destination->destination}}</option>
+                            @endforeach
+                        </select>
 
                     </div>
-                    <div class="my-4">
-                        <textarea placeholder="Description*" class="border-2  w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
+
+                    <div class="grid grid-cols-1 gap-5 md:grid-cols-1 mt-5">
+                        <input name="titre" class="border-2  w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="text" placeholder="Titre*" />
+                        @error('titre')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="my-4">
-                        <textarea placeholder="Conseil" class="border-2  w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
+                        <textarea name="description" placeholder="Description*" class="border-2  w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
+                    </div>
+                    <div class="my-4">
+                        <textarea name="conseil" placeholder="Conseil" class="border-2  w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
                     </div>
                     <div class="my-2 w-1/2 lg:w-1/4">
                         <button class="uppercase text-sm font-bold tracking-wide bg-blue-900 text-gray-100 p-3 rounded-lg w-full 
