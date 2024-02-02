@@ -26,6 +26,13 @@ class RecitController extends Controller
             'destinations' => Destination::all()
         ]);
     }
+    public function recit(Recit $recit)
+    {
+        // dd($recit);
+        return view('recit', [
+            "recit" => $recit
+        ]);
+    }
 
     public function store(Request $request)
     {

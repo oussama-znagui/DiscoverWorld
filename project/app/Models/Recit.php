@@ -14,6 +14,7 @@ class Recit extends Model
         "destination_id",
         "conseil"
     ];
+    protected $with = ["destination"];
 
     public function destination()
     {
